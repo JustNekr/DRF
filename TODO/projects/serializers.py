@@ -12,8 +12,10 @@ class ProjectSerializer(serializers.ModelSerializer):
 
 class TODOSerializer(serializers.ModelSerializer):
     project = serializers.HyperlinkedRelatedField(read_only=True, view_name='project')
-    users = serializers.StringRelatedField(many=True)
+    user = serializers.StringRelatedField()
 
     class Meta:
         model = TODO
         fields = '__all__'
+
+
