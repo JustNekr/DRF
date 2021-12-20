@@ -5,7 +5,6 @@ from .models import Project, TODO
 
 
 class ProjectSerializer(serializers.ModelSerializer):
-    # users = serializers.StringRelatedField(many=True)
     users = serializers.StringRelatedField(read_only=True, many=True)
 
     class Meta:
