@@ -13,7 +13,7 @@ class Command(BaseCommand):
                                           email='admin@mail.ru',
                                           password='admin')
 
-        for i in range(3):
+        for i in range(500):
             if not User.objects.filter(email=f'{i}@mail.ru').exists():
                 User.objects.create(username=f'{i}',
                                     email=f'{i}@mail.ru',
