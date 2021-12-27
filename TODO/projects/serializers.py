@@ -13,7 +13,7 @@ class ProjectSerializer(serializers.ModelSerializer):
 
 
 class TODOSerializer(serializers.ModelSerializer):
-    project = serializers.StringRelatedField()
+    # project = serializers.StringRelatedField()
     user = serializers.StringRelatedField()
 
     class Meta:

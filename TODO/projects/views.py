@@ -9,11 +9,11 @@ from .serializers import ProjectSerializer, TODOSerializer
 
 
 class ProjectPagination(PageNumberPagination):
-    page_size = 10
+    page_size = 200
 
 
 class TODOPagination(PageNumberPagination):
-    page_size = 20
+    page_size = 200
 
 
 class ProjectModelViewSet(ModelViewSet):

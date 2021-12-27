@@ -8,6 +8,8 @@ import Menu from "./components/Menu";
 import Footer from "./components/Footer";
 import ProjectList from './components/Project.js'
 import NoMatch from "./components/NoMatch";
+import ProjectTodoList from "./components/ProjectToDo";
+import TodoList from "./components/ToDoList";
 
 
 
@@ -17,7 +19,8 @@ class App extends React.Component {
        super(props)
        this.state = {
            'users': [],
-           'projects': []
+           'projects': [],
+           'todo': []
        }
    }
 
@@ -41,6 +44,16 @@ class App extends React.Component {
                    }
                )
            }).catch(error => console.log(error))
+
+       axios.get('http://127.0.0.1:8000/api/todo')
+           .then(response => {
+               const todo = response.data.results
+               this.setState(
+                   {
+                       'todo': todo
+                   }
+               )
+           }).catch(error => console.log(error))
     }
 
    render () {
@@ -54,6 +67,9 @@ class App extends React.Component {
                           <Link to="/projects">Projects</Link>
                         </li>
                         <li>
+                          <Link to="/todo">To DO</Link>
+                        </li>
+                        <li>
                           <Link to="/">Users</Link>
                         </li>
                       </ul>
@@ -61,8 +77,10 @@ class App extends React.Component {
                     <Routes>
                         <Route path="/" element={<UserList users={this.state.users} />} />
                         <Route path="/projects" element={<ProjectList projects={this.state.projects}/>} />
+                        <Route path="/todo" element={<TodoList items={this.state.todo}/>} />
                         <Route path="*" element={<NoMatch />} />
-                        <Route path="/users" element={<Navigate to ="/" />}/>
+                        <Route path="/users" element={<Navigate to ="/" />} />
+                        <Route path="/projects/:id" element={<ProjectTodoList items={this.state.todo} />} />
                     </Routes>
                 </Router>
 
