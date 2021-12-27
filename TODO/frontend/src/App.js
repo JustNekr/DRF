@@ -7,6 +7,7 @@ import UserList from './components/User.js'
 import Menu from "./components/Menu";
 import Footer from "./components/Footer";
 import ProjectList from './components/Project.js'
+import NoMatch from "./components/NoMatch";
 
 
 
@@ -62,6 +63,7 @@ class App extends React.Component {
                     <Routes>
                         <Route path="/" element={<UserList users={this.state.users} />} />
                         <Route path="/projects" element={<ProjectList projects={this.state.projects}/>} />
+                        <Route path="*" element={<NoMatch />} />
                     </Routes>
                 </Router>
 
@@ -70,5 +72,17 @@ class App extends React.Component {
        )
    }
 }
+
+// function NoMatch() {
+//   let location = useLocation();
+//
+//   return (
+//     <div>
+//       <h3>
+//         No match for <code>{location.pathname}</code>
+//       </h3>
+//     </div>
+//   );
+// }
 
 export default App;
